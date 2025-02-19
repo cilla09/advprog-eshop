@@ -1,5 +1,6 @@
 plugins {
 	java
+	jacoco
 	id("org.springframework.boot") version "3.3.8"
 	id("io.spring.dependency-management") version "1.1.7"
 }
@@ -63,4 +64,16 @@ tasks.register<Test>("functionalTest") {
 
 tasks.withType<Test>().configureEach {
 	useJUnitPlatform()
+
+}
+
+tasks.test {
+	filter {
+		excludeTestsMatching("*FunctionalTest")
+	}
+	finalizedBy(tasks.jacocoTestReport) // Ensure code coverage report is always generated after tests
+}
+
+tasks.jacocoTestReport {
+	dependsOn(tasks.test) // Ensure tests run before generating the report
 }
