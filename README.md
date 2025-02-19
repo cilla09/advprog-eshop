@@ -17,8 +17,8 @@ Menggunakan UUID lebih aman dibanding auto-increment integer, karena tidak bisa 
 Menerapkan validasi produk yang mau diedit tidak boleh null.
 ```python
 if (productToEdit != null) {
-productToEdit.setProductName(product.getProductName());
-productToEdit.setProductQuantity(product.getProductQuantity());
+    productToEdit.setProductName(product.getProductName());
+    productToEdit.setProductQuantity(product.getProductQuantity());
 }
 ```
 
