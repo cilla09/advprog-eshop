@@ -15,9 +15,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ProductRepositoryTest {
     @InjectMocks
     ProductRepository productRepository;
+
     @BeforeEach
     void setUp() {
     }
+
     @Test
     void testCreateAndFind() {
         Product product = new Product();
@@ -33,11 +35,13 @@ public class ProductRepositoryTest {
         assertEquals(product.getProductName(), savedProduct.getProductName());
         assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
     }
+
     @Test
     void testFindAllIfEmpty() {
         Iterator<Product> productIterator = productRepository.findAll();
         assertFalse(productIterator.hasNext());
     }
+
     @Test
     void testFindAllIfMoreThanOneProduct() {
         Product product1 = new Product();
@@ -101,10 +105,7 @@ public class ProductRepositoryTest {
 
         assertTrue(productIterator.hasNext());
         productRepository.delete(product1.getProductId());
-        if (product1 != null) {
-            assertTrue(true);
-        }
-        assertFalse(productIterator.hasNext());
+        assertFalse(productRepository.findAll().hasNext());
     }
 
     @Test
@@ -113,10 +114,10 @@ public class ProductRepositoryTest {
         product.setProductName("Nonexistent");
         product.setProductQuantity(1);
         productRepository.create(product);
-        productRepository.delete(product.getProductId());
+        productRepository.delete("invalid_id");
 
         Iterator<Product> productIterator = productRepository.findAll();
-        assertFalse(productIterator.hasNext());
+        assertTrue(productIterator.hasNext());
     }
 
     @Test
@@ -137,5 +138,26 @@ public class ProductRepositoryTest {
 
         Iterator<Product> productIterator = productRepository.findAll();
         assertFalse(productIterator.hasNext());
+    }
+
+    @Test
+    void testFindByIdExistingProduct() {
+        Product product = new Product();
+        product.setProductId("123");
+        product.setProductName("Test Product");
+        product.setProductQuantity(10);
+        productRepository.create(product);
+
+        Product foundProduct = productRepository.findById("123");
+        assertNotNull(foundProduct);
+        assertEquals("123", foundProduct.getProductId());
+        assertEquals("Test Product", foundProduct.getProductName());
+        assertEquals(10, foundProduct.getProductQuantity());
+    }
+
+    @Test
+    void testFindByIdNonExistentProduct() {
+        Product foundProduct = productRepository.findById("nonexistent");
+        assertNull(foundProduct);
     }
 }
