@@ -3,17 +3,6 @@ plugins {
 	jacoco
 	id("org.springframework.boot") version "3.3.8"
 	id("io.spring.dependency-management") version "1.1.7"
-	id("org.sonarqube") version "4.4.1.3373"
-}
-
-sonar {
-	properties {
-		property("sonar.projectKey", "cilla09_advprog-eshop")
-		property("sonar.organization", "cilla09")
-		property("sonar.host.url", "https://sonarcloud.io")
-		property("sonar.gradle.skipCompile", "true")
-		property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
-	}
 }
 
 group = "id.ac.ui.cs.advprog"
@@ -87,9 +76,4 @@ tasks.test {
 
 tasks.jacocoTestReport {
 	dependsOn(tasks.test) // Ensure tests run before generating the report
-
-	reports {
-		xml.required = true
-		html.required = true
-	}
 }
