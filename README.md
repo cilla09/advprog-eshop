@@ -65,7 +65,7 @@ Untuk memperbaikinya, saya menghapus metode tersebut karena ternyata tidak diper
 ### About my CI/CD Workflow Implementation
 Ya, implementasi saya sudah sesuai dengan definisi Continuous Integration & Continuous Deployment. Untuk CI (implementasi & testing), saya sudah mengimplementasi `ci.yml`, `scorecard.yml`, `sonarcloud.yml` untuk secara otomatis menguji kode saya ketika ada push atau pull request. Sementara untuk CD (deployment & maintenance), saya menggunakan Koyeb yang secara otomatis mendeploy aplikasi saya setiap ada push atau pull request. Keduanya berjalan lancar, sehingga sudah memenuhi definisi CI/CD.
 
-## Code Coverage
-
+### Code Coverage
+![image](https://github.com/user-attachments/assets/9d9dec07-0c81-4c94-a8e8-d169c32ecd98)
 
 </details>
