@@ -1,5 +1,13 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class OrderTest {
     private List<Product> products;
 
@@ -21,6 +29,7 @@ public class OrderTest {
     @Test
     void testCreate0rderEmptyProduct() {
         this.products.clear();
+
         assertThrows(IllegalArgumentException.class, () -> {
             Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
                     this.products, 1708560000L, "Safira Sudrajat");
@@ -39,14 +48,14 @@ public class OrderTest {
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", order.getId());
         assertEquals(1708560000L, order.getOrderTime());
         assertEquals("Safira Sudrajat", order.getAuthor());
-        assertEquals(OrderStatus.WAITING_PAYMENT.getValue(), order.getStatus());
+        assertEquals("WAITING_PAYMENT", order.getStatus());
     }
 
     @Test
     void testCreateOrderSuccessStatus() {
         Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
-                this.products, 1708560000L, "Safina Sudraiat", OrderStatus.SUCCESS.getValue());
-        assertEquals(OrderStatus.SUCCESS.getValue(), order.getStatus());
+                this.products, 1708560000L, "Safina Sudraiat", "SUCCESS");
+        assertEquals("SUCCESS", order.getStatus());
     }
 
     @Test
@@ -61,8 +70,8 @@ public class OrderTest {
     void testSetStatusToCancelled() {
         Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
                 this.products, 1708560000L, "Safira Sudrajat");
-        order.setStatus(OrderStatus.CANCELLED.getValue());
-        assertEquals(OrderStatus.CANCELLED.getValue(), order.getStatus());
+        order.setStatus("CANCELLED");
+        assertEquals("CANCELLED", order.getStatus());
     }
 
     @Test
