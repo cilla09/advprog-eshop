@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 class CODPaymentServiceTest {
 
     @Mock
-    private PaymentService paymentService;
+    private PaymentServiceImpl paymentService;
 
     @InjectMocks
     private CODPaymentServiceImpl codPaymentService;
