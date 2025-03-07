@@ -27,9 +27,11 @@ public class CODPaymentServiceImpl implements CODPaymentService {
         // Validate payment data
         if (isValidPaymentData(paymentData)) {
             // Update payment status to SUCCESS
+            payment.setStatus(PaymentStatus.SUCCESS.getValue());
             return paymentService.setStatus(payment, PaymentStatus.SUCCESS.getValue());
         } else {
             // Update payment status to REJECTED
+            payment.setStatus(PaymentStatus.REJECTED.getValue());
             return paymentService.setStatus(payment, PaymentStatus.REJECTED.getValue());
         }
     }
