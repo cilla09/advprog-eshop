@@ -100,4 +100,24 @@ class PaymentServiceImplTest {
 
     @Test
     void testGetPayment() {
-        when(paymentRepository.findById("
+        when(paymentRepository.findById("payment-123")).thenReturn(payment);
+
+        Payment result = paymentService.getPayment("payment-123");
+
+        assertNotNull(result);
+        assertEquals(payment.getId(), result.getId());
+    }
+
+    @Test
+    void testGetAllPayments() {
+        List<Payment> payments = new ArrayList<>();
+        payments.add(payment);
+
+        when(paymentRepository.findAll()).thenReturn(payments);
+
+        List<Payment> result = paymentService.getAllPayments();
+
+        assertNotNull(result);
+        assertEquals(1, result.size());
+    }
+}
