@@ -120,3 +120,12 @@ Implementasi: `CarServiceImpl` yang bergantung pada interface `CarService` dan `
 - Jika tidak menerapkan LSP, bisa terdapat banyak implementasi fungsi yang tidak diperlukan dalam suatu class, sehingga membuat kode lebih rumit dan sia-sia.
 - Jika tidak menerapkan DIP, akan sulit mengganti database atau logika bisnis karena mereka bergantung satu sama lain, sehingga kurang fleksibilitas saya dalam memodifikasi kode.
 </details>
+
+<details>
+<summary>Module 4</summary>
+
+1. Setelah mencoba alur Test Driven Development (TDD), saya merasa kode yang saya buat menjadi lebih sesuai dengan target yang saya inginkan. Walau, saya masih belum terlalu terbiasa dengan pembuatan tes sebelum implementasi aktual. Ibarat kita sudah harus mengetahui kita mau suatu masakan terasa seperti apa sebelum mulai memasak dan trial dan error sambil memasukkan berbagai bumbu. Alur TDD ini cukup menantang bagi saya, namun saya merasa alur ini lebih efektif dalam memastikan bahwa kode yang saya buat kualitasnya tetap terjaga, target yang diinginkan tercapai, coverage tetap cukup, dan potensi bug diminimalisir. Untuk tes-tes yang akan saya buat kedepannya, saya merasa harus mempunyai gambaran yang lebih jelas terlebih dahulu mengenai fungsi seperti apa yang saya ingin kode saya bisa lakukan, sehingga pembuatan tes dan implementasinya bisa lebih tepat sasaran.
+
+
+2. Dari unit test yang sudah saya buat selama tutorial, saya sudah mencoba mengikuti prinsip F.I.R.S.T, yaitu Fast, Independent, Repeatable, Self-validating, dan Timely. Namun, nyatanya masih terdapat beberapa tes yang belum sepenuhnya memenuhi prinsip tersebut. Saya belum bisa memastikan independensi setiap unit test. Supaya bisa memenuhi prinsip F.I.R.S.T, saya perlu mengulas ulang kode saya agar masing-masing unit test dapat berjalan dengan independen dan tidak bergantung pada eksekusi lain, dan semua test bisa dijalankan berulang kali secara konsisten.
+</details>
