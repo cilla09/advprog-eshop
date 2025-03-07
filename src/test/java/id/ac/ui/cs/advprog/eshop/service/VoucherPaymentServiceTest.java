@@ -25,7 +25,7 @@ class VoucherPaymentServiceTest {
     private PaymentService paymentService;
 
     @InjectMocks
-    private VoucherPaymentService voucherPaymentService;
+    private VoucherPaymentServiceImpl voucherPaymentService;
 
     private Order order;
     private Map<String, String> paymentData;
